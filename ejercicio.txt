@@ -1,0 +1,10 @@
+Utilizar la siguiente API para implementar un buscador de Pokemones:
+https://pokeapi.co/
+
+Mostrar una lista con los pokemones buscados, mostrando nombre y foto.
+Manejar caso en que el pokemon no exista.
+Permitir eliminar de la lista.
+Diseño a criterio propio. Debe ser plácido a la vista.
+
+Tecnologias de JS a usar: 
+fetch, promises, .then, async await, event listeners.
