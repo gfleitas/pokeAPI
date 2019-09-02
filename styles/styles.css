@@ -1,17 +1,17 @@
 body{
     text-align: center;
-    font-family: 'Indie Flower', cursive;
 }
 
 i{
     float: right;
+    padding: 3px;
 }
 
 .pokecard{
     background-color: #AF601A;
     margin-left: 20%;
     height: 100%;
-    width: 60%;
+    width: 55%;
     margin-bottom: 20px;
     font-family: 'Bangers', cursive;
 }
@@ -27,6 +27,7 @@ i{
     border-bottom: 1px solid #000;
     background-color: #784212;
     height: 40px;
+    margin-bottom: 1%;
 }
 
 .pokecard img{
@@ -37,6 +38,12 @@ i{
 
 .pokecard p{
     font-size: 20px;
+    margin-bottom: 1%;
+}
+
+.pokecard hr{
+    margin-top: 4%;
+    margin-bottom: 5%;
 }
 
 .overflowAbilities{
@@ -66,9 +73,13 @@ i{
   }
 
 .pokeresult img{
-    width: 50%;
+    width: 60%;
 }
 
+.pokeresult{
+    font-size: 120%;
+    font-weight: bold;
+}
 
   @media (max-width: 760px) {
     .pokecard p{

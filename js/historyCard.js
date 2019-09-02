@@ -5,13 +5,22 @@ export function historyPokemon(pokemon, node, deleteFunction) {
     label.setAttribute('class','historycard');
     node.appendChild(label);
 
+    let iconTimes = document.createElement("i");
+    iconTimes.classList.add("far","fa-times-circle");
+    label.appendChild(iconTimes);
+
+    let br1 = document.createElement("br");
+    label.appendChild(br1)
+
     let image = document.createElement("img");
     image.setAttribute('src',`${pokemon.image}`);
     label.appendChild(image);
 
-    let iconTimes = document.createElement("i");
-    iconTimes.classList.add("far","fa-times-circle");
-    label.appendChild(iconTimes);
+    let br2 = document.createElement("br");
+    label.appendChild(br2)
+
+    let h3 = document.createTextNode(`${pokemon.name}`)
+    label.appendChild(h3);
 
     let result = document.getElementById("result");
     result.appendChild(label)

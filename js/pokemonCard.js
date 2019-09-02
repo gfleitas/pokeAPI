@@ -10,6 +10,10 @@ export const pokemonCard = (pokemon, node) => {
             <img src="${pokemon.image}" alt="${pokemon.name}">
             <hr>
             <p>
+            <b>Locations:</b>
+                <div id="location-list" style="font-family: 'Fjalla One', sans-serif;">${pokemon.location}</div>
+            </p>
+            <p>
             <b>Abilities:</b>
                 <div class="overflowAbilities">${pokemon.abInfo}</div>
             </p>
