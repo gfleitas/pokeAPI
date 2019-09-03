@@ -11,7 +11,7 @@ export const pokemonCard = (pokemon, node) => {
             <hr>
             <p>
             <b>Locations:</b>
-                <div id="location-list" style="font-family: 'Fjalla One', sans-serif;">${pokemon.location}</div>
+                <div id="location-list" class="overflowLocations" style="font-family: 'Fjalla One', sans-serif;"></div>
             </p>
             <p>
             <b>Abilities:</b>
