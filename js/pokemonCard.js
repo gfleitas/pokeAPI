@@ -5,7 +5,7 @@ export const pokemonCard = (pokemon, node) => {
     node.innerHTML = `
     <div class="cardborder">
         <h3>${pokemon.name}</h3>
-            <p><b>Type:</b> ${pokemon.type}</p>
+            <p><b>Type:</b> ${pokemon.type} &nbsp &nbsp &nbsp<b>ID:</b>${pokemon.id}</p>
             <hr>
             <img src="${pokemon.image}" alt="${pokemon.name}">
             <hr>

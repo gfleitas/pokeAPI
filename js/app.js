@@ -25,8 +25,10 @@ const searchPokemon = () => {
             .then(async pokemon =>{
                 console.log(pokemon)
                 const ability = pokemon.abilities.map(abUrl => abUrl.ability.url);
-                const abInfo = await urlAb(ability);    
-                const location = await locationFetch(pokeName);
+                console.log(ability)
+                const abInfo = await urlAb(ability); 
+                const location = pokemon.location_area_encounters; 
+                const locationInfo = await locationFetch(pokeName, location);
 
                 let newPokemon = {
                     id: pokemon.id,
@@ -35,11 +37,10 @@ const searchPokemon = () => {
                     image: pokemon.sprites.front_default,
                     ability,
                     abInfo,
-                    location
+                    location,
+                    locationInfo
                             
                 }
-
-                console.log(newPokemon)
 
                 pokemons.push(newPokemon)
 
@@ -54,6 +55,7 @@ const searchPokemon = () => {
 
 const urlAb = async abilities => {
     const fetchAb = abilities.map(url => fetch(url).then(res => res.json())) // array with all fetched abilities
+    console.log(fetchAb)
     const fetchedAb = await Promise.all(fetchAb) // await the responses
     
     return fetchedAb.map(res => {
@@ -66,24 +68,58 @@ const urlAb = async abilities => {
     }).join("<br><br>")
 }
 
-const locationFetch = pokeName =>{
+const locationFetch =async (pokeName, locations) =>{
     const fetchLo = fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}/encounters`)
-    .then(data => {
-        data.json(), console.log(data)
-    })
-    .then(data => {
-        console.log(data)
-        const fetchedLo = Promise.all(fetchLo)
-        console.log(fetchedLo)
+    .then(res => {
+        res.json()
+    })  
+    console.log(fetchLo)
+    // const fetchedLo =  Promise.all(fetchLo) 
+    // console.log(fetchedLo)
+}
 
-        return fetchedLo.map(res => {
-        const searchPokemonLo = res.name;
-        return searchPokemonLo;
-        }) 
-    }).catch(() => locationError())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const locationFetch = pokeName =>{
+//     const fetchLo = fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}/encounters`)
+//     .then(data => {
+//         data.json(), console.log(data)
+//     })
+//     .then(data => {
+//         console.log(data)
+//         const fetchedLo = Promise.all(fetchLo)
+//         console.log(fetchedLo)
+
+//         return fetchedLo.map(res => {
+//         const searchPokemonLo = res.name;
+//         return searchPokemonLo;
+//         }) 
+//     }).catch(() => locationError(pokeName))
 
     
-}
+// }
 
 function pokemonError() {
     const nodePokemonList = document.querySelector('#pokemon-list');
@@ -91,7 +127,7 @@ function pokemonError() {
     nodePokemonList.innerHTML = `<img class="error" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR82hH8EWMh8_J_pEGnB6U9HuELCLU3mdJTL0s_Z-OaUfEnzEnT"/>`;
 }
 
-function locationError() {
-    const locationList = document.querySelector('#location-list');
-    locationList.innerHTML = 'Pokemon doesn´t have a location'
-}
+// function locationError(pokeName) {
+//     const locationList = document.querySelector('#location-list');
+//     locationList.innerHTML = `${pokeName} doesn't have a location.<br> ${pokeName} is a starter Pokemon or a Legendary Pokemon`
+// }
